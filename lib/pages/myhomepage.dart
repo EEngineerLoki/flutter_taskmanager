@@ -16,6 +16,8 @@ class _MyHomePageState extends State<MyHomePage> {
     ['Do Exercise', false]
   ];
 
+  final _controller = TextEditingController();
+
   void checkBoxChange(bool? value, int index) {
     setState(() {
       toDoList[index][1] = !toDoList[index][1];
@@ -26,8 +28,26 @@ class _MyHomePageState extends State<MyHomePage> {
     showDialog(
       context: context, 
       builder: (context) {
-        return Dialogbox();
+        return Dialogbox(
+          controller: _controller,
+          onSave: saveNewTask,
+          onCancel: () => Navigator.of(context).pop(),
+        );
       });
+  }
+
+  void saveNewTask() {
+    setState(() {
+      toDoList.add([_controller.text, false]);
+      _controller.clear();
+    });
+    Navigator.of(context).pop();
+  }
+
+  void deleteTask(int index) {
+    setState(() {
+      toDoList.removeAt(index);
+    });
   }
 
   @override
@@ -54,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
           taskName: toDoList[index][0],
           taskComplete: toDoList[index][1],
           onChanged: (value) => checkBoxChange(value, index),
+          deleteFunction: (context) => deleteTask(index),
         ),
         itemCount: toDoList.length,
       ),
