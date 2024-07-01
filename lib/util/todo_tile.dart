@@ -1,57 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ToDoTile extends StatelessWidget {
   const ToDoTile({
     super.key,
-    required this.taskName,
-    required this.taskComplete,
-    required this.onChanged,
-    required this.deleteFunction});
+    required this.socialPlatform,
+    required this.emailAccount,
+    required this.accountPassword});
 
-  final String taskName;
-  final bool taskComplete;
-  final Function(bool?)? onChanged;
-  final Function(BuildContext)? deleteFunction;
-
+    final String socialPlatform;
+    final String emailAccount;
+    final String accountPassword;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 12, left: 12, right: 12),
-      child: Slidable(
-        endActionPane: ActionPane(
-          motion: const StretchMotion(),
-          children: [
-            SlidableAction(
-              onPressed: deleteFunction,
-              icon: Icons.delete,
-              backgroundColor: Colors.amber.shade800,
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(12), bottomRight: Radius.circular(12)
-              ),
-            )
-          ],
+      padding: const EdgeInsets.only(top: 15, right: 15, left: 15),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white12,
+          borderRadius: BorderRadius.circular(12)
         ),
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: const BoxDecoration(
-            color: Colors.amber,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12), bottomLeft: Radius.circular(12)
-            )
-          ),
-          child: Row(
+        child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Column(
             children: [
-              Checkbox(value: taskComplete, onChanged: onChanged),
-              Text(
-                taskName,
-                style: TextStyle(
-                  decoration: taskComplete ? TextDecoration.lineThrough : TextDecoration.none
-                ),
-              )
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Text(socialPlatform, 
+                style: const TextStyle(color: Colors.white, fontSize: 18),),
+              ],),
+              Padding(
+                padding: const EdgeInsets.only(top: 12),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  Text(emailAccount,
+                  style: const TextStyle(color: Colors.amber, fontSize: 16),), const Icon(Icons.file_copy, color: Colors.white24,)
+                ],),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 12),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  Text(accountPassword, 
+                  style: const TextStyle(color: Colors.amber, fontSize: 16),), const Icon(Icons.file_copy, color: Colors.white24,)
+                ],),
+              ),
             ],
-          ),
+          )
         ),
       ),
     );
