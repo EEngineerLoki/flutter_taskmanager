@@ -27,7 +27,7 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: const Color(0xFF191d30),
       body: ListView.builder(
         itemCount: account.length,
         itemBuilder: (context, index) => ToDoTile(

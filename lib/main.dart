@@ -45,7 +45,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black87,
+        backgroundColor: const Color.fromARGB(255, 18, 21, 37),
         centerTitle: true,
         title: const Text('Password Manager', style: TextStyle(color: Colors.white),
         ),
@@ -54,13 +54,13 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: CurvedNavigationBar(
         index: currentIndex,
         onTap: pagesNavigate,
-        backgroundColor: Colors.black87,
-        color: Colors.black38,
+        backgroundColor: const Color(0xFF191d30),
+        color: const Color.fromARGB(255, 18, 21, 37),
         animationCurve: Curves.ease,
         animationDuration: const Duration(milliseconds: 300),
         items: const [
-          Icon(Icons.home, color: Colors.amber, size: 30,),
-          Icon(Icons.settings, color: Colors.amber, size: 30,)
+          Icon(Icons.home, color: Colors.amber, size: 35,),
+          Icon(Icons.settings, color: Colors.amber, size: 35,)
         ],
       ),
     );

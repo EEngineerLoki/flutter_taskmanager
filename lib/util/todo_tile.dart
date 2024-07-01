@@ -17,7 +17,7 @@ class ToDoTile extends StatelessWidget {
       padding: const EdgeInsets.only(top: 15, right: 15, left: 15),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white12,
+          color: Colors.white24,
           borderRadius: BorderRadius.circular(12)
         ),
         child: Padding(
