@@ -58,7 +58,7 @@ class MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewAccount,
-        backgroundColor: Colors.white24,
+        backgroundColor: const Color.fromARGB(172, 32, 35, 48),
         child: const Icon(Icons.add, color: Colors.amber,),
       ),
     );

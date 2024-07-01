@@ -22,7 +22,7 @@ class DialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: const Color(0xFFcccfde),
+      backgroundColor: const Color.fromARGB(255, 201, 201, 209),
       content: SizedBox(
         height: 300,
         width: 400,
@@ -50,6 +50,7 @@ class DialogBox extends StatelessWidget {
                   hintText: 'Enter Password'
                 ),),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   MyButton(onPressed: onSave, text: 'Save'),
                   MyButton(onPressed: onCancel, text: 'Cancel')
