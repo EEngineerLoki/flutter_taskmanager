@@ -17,11 +17,31 @@ class MyHomePageState extends State<MyHomePage> {
     ['Instagram', 'mtthwloki@gmail.com', 'aosdcimao#123']
   ];
 
+  final _acontroller = TextEditingController();
+  final _econtroller = TextEditingController();
+  final _pcontroller = TextEditingController();
+
   void createNewAccount() {
     showDialog(
       context: context,
-      builder: (context) => const DialogBox(),
+      builder: (context) => DialogBox(
+        onSave: saveNewAccount,
+        onCancel: Navigator.of(context).pop,
+        accontroller: _acontroller,
+        eccontroller: _econtroller,
+        pccontroller: _pcontroller,
+      ),
     );
+  }
+
+  void saveNewAccount() {
+    setState(() {
+      account.add([_acontroller.text, _econtroller.text, _pcontroller.text ]);
+      _acontroller.clear();
+      _econtroller.clear();
+      _pcontroller.clear();
+    });
+    Navigator.of(context).pop();
   }
 
   @override
