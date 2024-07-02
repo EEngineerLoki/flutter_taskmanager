@@ -1,26 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ToDoTile extends StatelessWidget {
   const ToDoTile({
     super.key,
     required this.socialPlatform,
     required this.emailAccount,
-    required this.accountPassword});
+    required this.accountPassword,
+    required this.deleteFunction});
 
     final String socialPlatform;
     final String emailAccount;
     final String accountPassword;
+    final Function(BuildContext)? deleteFunction;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 15, right: 15, left: 15),
-      child: GestureDetector(
-        
+      child: Slidable(
+        endActionPane: ActionPane(
+          motion: const ScrollMotion(),
+          children: [
+            SlidableAction(
+              borderRadius: const BorderRadius.only(topRight: Radius.circular(12), bottomRight: Radius.circular(12)),
+              onPressed: deleteFunction,
+              foregroundColor: Colors.white,
+              backgroundColor: const Color.fromARGB(195, 244, 67, 54),
+              icon: Icons.delete,
+            )
+          ],
+        ),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white24,
-            borderRadius: BorderRadius.circular(12)
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(12), bottomLeft: Radius.circular(12))
           ),
           child: Padding(
             padding: const EdgeInsets.all(25.0),

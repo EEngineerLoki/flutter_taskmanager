@@ -44,6 +44,12 @@ class MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).pop();
   }
 
+  void deleteAccount(int index) {
+    setState(() {
+      account.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,11 +60,12 @@ class MyHomePageState extends State<MyHomePage> {
           socialPlatform: account[index][0],
           emailAccount: account[index][1],
           accountPassword: account[index][2],
+          deleteFunction: (context) => deleteAccount(index),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewAccount,
-        backgroundColor: const Color.fromARGB(172, 32, 35, 48),
+        backgroundColor: const Color.fromARGB(146, 56, 64, 112),
         child: const Icon(Icons.add, color: Colors.amber,),
       ),
     );
