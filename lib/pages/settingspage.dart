@@ -6,7 +6,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: const Color(0xFF191d30),
+      backgroundColor: Color(0xFF191d30),
     );
   }
 }

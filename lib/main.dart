@@ -1,7 +1,6 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_accountmanager/data/appcolors.dart';
 import 'package:flutter_accountmanager/pages/myhomepage.dart';
-import 'package:flutter_accountmanager/pages/settingspage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +11,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      home: const MainPage(),
+      theme: MyAppThemes.lighTheme,
+      darkTheme: MyAppThemes.darkTheme,
+      themeMode: ThemeMode.system,
     );
   }
 }
@@ -28,41 +30,37 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
-  int currentIndex = 0;
+  // ignore: unused_field
+  ThemeMode _themeMode = ThemeMode.system;
 
-  final List _pages = [
-    const MyHomePage(),
-    const SettingsPage()
-  ];
-
-  void pagesNavigate(int index) {
+  // use to switch from light mode to dark mode
+  void _toggleTheme(ThemeMode themeMode) {
     setState(() {
-      currentIndex = index;
+      _themeMode = themeMode;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    
+    // bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 56, 64, 112),
         centerTitle: true,
         title: const Text('Password Manager', style: TextStyle(color: Colors.white),
         ),
+        // COME BACK HERE TO ENABLE THEMEMODE SWITCHING
+        //actions: [
+        //  Switch(
+        //    value: isDarkMode, 
+        //    onChanged: (isOn) {
+        //      isOn ? _toggleTheme(ThemeMode.dark) : _toggleTheme(ThemeMode.light);
+        //    }),
+        //],
       ),
-      body: _pages[currentIndex],
-      bottomNavigationBar: CurvedNavigationBar(
-        index: currentIndex,
-        onTap: pagesNavigate,
-        backgroundColor: const Color(0xFF191d30),
-        color: const Color.fromARGB(255, 56, 64, 112),
-        animationCurve: Curves.ease,
-        animationDuration: const Duration(milliseconds: 300),
-        items: const [
-          Icon(Icons.home, color: Colors.amber, size: 35,),
-          Icon(Icons.settings, color: Colors.amber, size: 35,)
-        ],
-      ),
+      body: const MyHomePage(),
     );
   }
 }

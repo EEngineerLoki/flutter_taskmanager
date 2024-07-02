@@ -49,14 +49,24 @@ class ToDoTile extends StatelessWidget {
                     Text(emailAccount,
                     style: const TextStyle(color: Colors.amber, fontSize: 16),), 
                     IconButton(
-                      onPressed: () => FlutterClipboard.copy(emailAccount), 
+                      onPressed: () {
+                        FlutterClipboard.copy(emailAccount);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Email Copied to Clipboard!'))
+                        );
+                      }, 
                       icon: const Icon(Icons.file_copy, color: Colors.white24, ))
                   ],),
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     Text(accountPassword,
                     style: const TextStyle(color: Colors.amber, fontSize: 16),), 
                     IconButton(
-                      onPressed: () => FlutterClipboard.copy(accountPassword), 
+                      onPressed: () {
+                        FlutterClipboard.copy(accountPassword);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Password Copied to Clipboard!'))
+                        );
+                      }, 
                       icon: const Icon(Icons.file_copy, color: Colors.white24, ))
                   ],),
               ],
