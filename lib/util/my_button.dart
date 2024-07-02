@@ -15,7 +15,7 @@ class MyButton extends StatelessWidget {
       onPressed: onPressed,
       padding: const EdgeInsets.all(12),
       color: const Color.fromARGB(255, 144, 149, 173),
-      child: Text(text),
+      child: Text(text, style: const TextStyle(color: Colors.black)),
     );
   }
 }

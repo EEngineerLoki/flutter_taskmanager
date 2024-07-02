@@ -36,18 +36,21 @@ class DialogBox extends StatelessWidget {
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Enter Account', 
+                  hintStyle: TextStyle(color: Colors.black)
               ),),
               TextField(
                 controller: eccontroller,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Enter Email'
+                  hintText: 'Enter Email',
+                  hintStyle: TextStyle(color: Colors.black)
                 ),),
               TextField(
                 controller: pccontroller,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Enter Password'
+                  hintText: 'Enter Password',
+                  hintStyle: TextStyle(color: Colors.black)
                 ),),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

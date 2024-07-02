@@ -4,7 +4,7 @@ import 'package:flutter_accountmanager/pages/myhomepage.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
-  
+
   await Hive.initFlutter();
 
   var box = await Hive.openBox('mybox');
@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(),
-      theme: MyAppThemes.lighTheme,
-      darkTheme: MyAppThemes.darkTheme,
-      themeMode: ThemeMode.system,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 56, 64, 112))
+      ),
     );
   }
 }
