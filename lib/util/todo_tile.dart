@@ -1,3 +1,4 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -7,7 +8,7 @@ class ToDoTile extends StatelessWidget {
     required this.socialPlatform,
     required this.emailAccount,
     required this.accountPassword,
-    required this.deleteFunction});
+    required this.deleteFunction,});
 
     final String socialPlatform;
     final String emailAccount;
@@ -37,27 +38,27 @@ class ToDoTile extends StatelessWidget {
             borderRadius: BorderRadius.only(topLeft: Radius.circular(12), bottomLeft: Radius.circular(12))
           ),
           child: Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               children: [
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                   Text(socialPlatform, 
                   style: const TextStyle(color: Colors.white, fontSize: 18),),
                 ],),
-                Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     Text(emailAccount,
-                    style: const TextStyle(color: Colors.amber, fontSize: 16),), const Icon(Icons.file_copy, color: Colors.white24,)
+                    style: const TextStyle(color: Colors.amber, fontSize: 16),), 
+                    IconButton(
+                      onPressed: () => FlutterClipboard.copy(emailAccount), 
+                      icon: const Icon(Icons.file_copy, color: Colors.white24, ))
                   ],),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    Text(accountPassword, 
-                    style: const TextStyle(color: Colors.amber, fontSize: 16),), const Icon(Icons.file_copy, color: Colors.white24,)
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                    Text(accountPassword,
+                    style: const TextStyle(color: Colors.amber, fontSize: 16),), 
+                    IconButton(
+                      onPressed: () => FlutterClipboard.copy(accountPassword), 
+                      icon: const Icon(Icons.file_copy, color: Colors.white24, ))
                   ],),
-                ),
               ],
             )
           ),
