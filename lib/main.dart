@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_accountmanager/data/appcolors.dart';
 import 'package:flutter_accountmanager/pages/myhomepage.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
